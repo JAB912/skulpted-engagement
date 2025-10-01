@@ -1,55 +1,99 @@
-/* Skul'pted Engagement - Styles */
+/* Skul'pted Engagement - Styles (complete) */
+
+:root {
+  --bg: #f8f9fa;
+  --text: #222;
+  --muted: #666;
+  --header-bg: #000;
+  --footer-bg: #222;
+}
+
+* { box-sizing: border-box; }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   margin: 0;
   padding: 0;
-  line-height: 1.6;
-  background: #f8f9fa;
-  color: #333;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
 }
 
-header {
-  background: #000;
+/* Header with logo and site title */
+.site-header {
+  background: var(--header-bg);
   color: #fff;
-  text-align: center;
-  padding: 2rem 1rem;
+  padding: 18px 12px;
 }
 
-header h1 {
+.brand {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 12px;
+}
+
+/* Logo image */
+.logo-icon {
+  height: 64px; /* main logo size */
+  width: auto;
+  display: block;
+}
+
+/* Brand text */
+.brand-text h1 {
   margin: 0;
-  font-size: 2.5rem;
-  letter-spacing: 2px;
+  font-size: 1.6rem;
+  letter-spacing: 1px;
 }
 
-header p {
-  font-size: 1.2rem;
-  margin-top: 0.5rem;
-  opacity: 0.9;
+.brand-text p {
+  margin: 4px 0 0;
+  font-size: 0.98rem;
+  color: #e6e6e6;
+  opacity: 0.95;
 }
 
+/* Main content area */
 main {
   max-width: 900px;
-  margin: 2rem auto;
-  padding: 0 1rem;
+  margin: 28px auto;
+  padding: 0 16px;
 }
 
-h2 {
-  color: #111;
-  margin-bottom: 0.5rem;
+.intro p {
+  margin-top: 8px;
+  color: var(--muted);
 }
 
-ul {
-  list-style: disc inside;
-  margin: 0;
-  padding: 0;
+.services ul {
+  margin: 8px 0 0;
+  padding-left: 1.25rem;
 }
 
+/* Footer */
 footer {
-  background: #222;
-  color: #aaa;
+  background: var(--footer-bg);
+  color: #bbb;
   text-align: center;
-  padding: 1rem;
-  margin-top: 2rem;
+  padding: 12px;
+  margin-top: 28px;
   font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 680px) {
+  .brand {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+  }
+  .logo-icon {
+    height: 56px;
+  }
+  .brand-text h1 {
+    font-size: 1.25rem;
+  }
 }
