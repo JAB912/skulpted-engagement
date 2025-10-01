@@ -1,4 +1,4 @@
-/* Skul'pted Engagement - Styles (extra large logo, graphite steel header) */
+/* Skul'pted Engagement - Styles (super-sized logo, graphite steel header) */
 
 :root {
   --bg: #f8f9fa;
@@ -23,22 +23,22 @@ body {
 .site-header {
   background: var(--header-bg);
   color: #fff;
-  padding: 40px 12px; /* extra padding for HUGE logo */
+  padding: 50px 12px; /* more padding for huge logo */
   border-bottom: 2px solid #555;
 }
 
 .brand {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 32px;
   padding: 0 12px;
 }
 
-/* Logo image - HUGE */
+/* Logo image - SUPER HUGE */
 .logo-icon {
-  height: 240px; /* massive logo size */
+  height: 300px; /* gigantic logo */
   width: auto;
   display: block;
 }
@@ -46,13 +46,13 @@ body {
 /* Brand text */
 .brand-text h1 {
   margin: 0;
-  font-size: 2.4rem; /* larger heading to balance logo */
+  font-size: 2.8rem; /* scaled up for balance */
   letter-spacing: 1px;
 }
 
 .brand-text p {
-  margin: 10px 0 0;
-  font-size: 1.2rem;
+  margin: 12px 0 0;
+  font-size: 1.3rem;
   color: #e6e6e6;
   opacity: 0.95;
 }
@@ -60,17 +60,17 @@ body {
 /* Main content area */
 main {
   max-width: 900px;
-  margin: 40px auto;
+  margin: 48px auto;
   padding: 0 16px;
 }
 
 .intro p {
-  margin-top: 10px;
+  margin-top: 12px;
   color: var(--muted);
 }
 
 .services ul {
-  margin: 10px 0 0;
+  margin: 12px 0 0;
   padding-left: 1.25rem;
 }
 
@@ -79,25 +79,26 @@ footer {
   background: var(--footer-bg);
   color: #bbb;
   text-align: center;
-  padding: 14px;
-  margin-top: 40px;
+  padding: 16px;
+  margin-top: 48px;
   font-size: 0.9rem;
 }
 
 /* Responsive behavior */
-@media (max-width: 800px) {
+@media (max-width: 900px) {
   .brand {
     flex-direction: column;
     text-align: center;
-    gap: 20px;
+    gap: 24px;
   }
   .logo-icon {
-    height: 180px; /* still huge on smaller screens */
+    height: 220px; /* still very large on smaller screens */
   }
   .brand-text h1 {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
   .brand-text p {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
 }
+
