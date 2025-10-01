@@ -1,4 +1,4 @@
-/* Skul'pted Engagement - Styles (graphite steel header) */
+/* Skul'pted Engagement - Styles (large logo, graphite steel header) */
 
 :root {
   --bg: #f8f9fa;
@@ -23,7 +23,8 @@ body {
 .site-header {
   background: var(--header-bg);
   color: #fff;
-  padding: 18px 12px;
+  padding: 24px 12px; /* extra padding for larger logo */
+  border-bottom: 2px solid #555; /* thin steel border */
 }
 
 .brand {
@@ -31,13 +32,13 @@ body {
   margin: 0 auto;
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 20px;
   padding: 0 12px;
 }
 
-/* Logo image */
+/* Logo image - doubled in size */
 .logo-icon {
-  height: 64px;
+  height: 120px; /* bigger logo */
   width: auto;
   display: block;
 }
@@ -45,13 +46,13 @@ body {
 /* Brand text */
 .brand-text h1 {
   margin: 0;
-  font-size: 1.6rem;
+  font-size: 2rem; /* bumped up a little */
   letter-spacing: 1px;
 }
 
 .brand-text p {
-  margin: 4px 0 0;
-  font-size: 0.98rem;
+  margin: 6px 0 0;
+  font-size: 1.05rem;
   color: #e6e6e6;
   opacity: 0.95;
 }
@@ -59,7 +60,7 @@ body {
 /* Main content area */
 main {
   max-width: 900px;
-  margin: 28px auto;
+  margin: 32px auto;
   padding: 0 16px;
 }
 
@@ -79,7 +80,7 @@ footer {
   color: #bbb;
   text-align: center;
   padding: 12px;
-  margin-top: 28px;
+  margin-top: 32px;
   font-size: 0.9rem;
 }
 
@@ -88,12 +89,12 @@ footer {
   .brand {
     flex-direction: column;
     text-align: center;
-    gap: 8px;
+    gap: 12px;
   }
   .logo-icon {
-    height: 56px;
+    height: 100px; /* still big on mobile */
   }
   .brand-text h1 {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
   }
 }
