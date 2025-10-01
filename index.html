@@ -1,28 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Skul'pted Engagement</title>
+  <meta name="description" content="Skul'pted Engagement — marketing, design and FAA Part 107 commercial aerial photography & videography." />
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-  <!-- Header with logo + brand -->
-  <header class="site-header">
+  <!-- Skip link for keyboard users -->
+  <a class="skip-link" href="#main" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">Skip to content</a>
+
+  <!-- Header with logo + navigation -->
+  <header class="site-header" role="banner">
     <div class="brand">
-      <img src="logo/skulpted-se-icon.svg" alt="Skul'pted Engagement Logo" class="logo-icon" />
+      <img src="logo/skulpted-se-icon.svg" alt="Skul'pted Engagement logo" class="logo-icon" />
       <div class="brand-text">
         <h1>Skul'pted Engagement</h1>
         <p>Marketing • Design • Aerial Media</p>
       </div>
     </div>
 
-    <!-- Navigation bar with hamburger -->
-    <nav class="navbar">
-      <div class="menu-toggle" id="menu-toggle">
-        &#9776; <!-- hamburger icon -->
-      </div>
-      <ul id="menu">
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+      <button id="menu-toggle" class="menu-toggle" aria-expanded="false" aria-controls="menu">
+        <span aria-hidden="true">☰</span>
+        <span class="sr-only" style="position:absolute;left:-9999px">Toggle navigation</span>
+      </button>
+
+      <ul id="menu" class="menu">
         <li><a href="index.html">Home</a></li>
         <li><a href="faq.html">FAQ</a></li>
         <li><a href="blog.html">Blog</a></li>
@@ -32,30 +37,57 @@
     </nav>
   </header>
 
-  <!-- Main content -->
-  <main>
+  <!-- Main content (polished and exactly including your provided sections) -->
+  <main id="main">
     <section class="intro">
-      <h2>Welcome</h2>
+      <h2>What We Do</h2>
       <p>
-        Skul'pted Engagement provides creative marketing, social media management,
-        logo & label design, and FAA Part 107 licensed aerial photography/videography.
+        At <strong>Skul'pted Engagement</strong> we deliver creative marketing,
+        brand design, and FAA Part 107 certified aerial imaging — logos, beer labels,
+        social media management, and high-end drone photos & video.
       </p>
+    </section>
+
+    <section class="services">
+      <h2>Services</h2>
+      <ul>
+        <li>Marketing & Social Media Management</li>
+        <li>Brand Identity, Logos & Packaging</li>
+        <li>Commercial Drone Photography & Videography (Part 107)</li>
+        <li>Photo retouching, video editing, and deliverables</li>
+      </ul>
     </section>
   </main>
 
   <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 Skul'pted Engagement. All rights reserved.</p>
+  <footer role="contentinfo">
+    <p>&copy; 2025 Skul'pted Engagement — Midway, GA</p>
   </footer>
 
-  <!-- JavaScript for hamburger toggle -->
+  <!-- Small script: hamburger toggle + close menu when a link is clicked (mobile) -->
   <script>
-    const menuToggle = document.getElementById('menu-toggle');
-    const menu = document.getElementById('menu');
+    (function () {
+      const menuToggle = document.getElementById('menu-toggle');
+      const menu = document.getElementById('menu');
 
-    menuToggle.addEventListener('click', () => {
-      menu.classList.toggle('showing');
-    });
+      if (!menuToggle || !menu) return;
+
+      menuToggle.addEventListener('click', () => {
+        const isOpen = menu.classList.toggle('showing');
+        menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+
+      // Close menu when a link is clicked (mobile)
+      menu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          if (menu.classList.contains('showing')) {
+            menu.classList.remove('showing');
+            menuToggle.setAttribute('aria-expanded', 'false');
+          }
+        });
+      });
+    })();
   </script>
 </body>
 </html>
+
