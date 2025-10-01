@@ -1,4 +1,4 @@
-/* Skul'pted Engagement - Styles (complete) */
+/* Skul'pted Engagement - Styles (logo inverted for dark header) */
 
 :root {
   --bg: #f8f9fa;
@@ -35,11 +35,14 @@ body {
   padding: 0 12px;
 }
 
-/* Logo image */
+/* Logo image — INVERTED so a black logo becomes visible on dark header */
 .logo-icon {
   height: 64px; /* main logo size */
   width: auto;
   display: block;
+  /* invert black -> white on dark header */
+  -webkit-filter: invert(1) brightness(1.15);
+  filter: invert(1) brightness(1.15);
 }
 
 /* Brand text */
@@ -83,7 +86,7 @@ footer {
   font-size: 0.9rem;
 }
 
-/* Responsive */
+/* Responsive behavior */
 @media (max-width: 680px) {
   .brand {
     flex-direction: column;
