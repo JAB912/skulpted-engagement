@@ -1,4 +1,4 @@
-/* Skul'pted Engagement - Styles (large logo, graphite steel header) */
+/* Skul'pted Engagement - Styles (extra large logo, graphite steel header) */
 
 :root {
   --bg: #f8f9fa;
@@ -23,8 +23,8 @@ body {
 .site-header {
   background: var(--header-bg);
   color: #fff;
-  padding: 24px 12px; /* extra padding for larger logo */
-  border-bottom: 2px solid #555; /* thin steel border */
+  padding: 40px 12px; /* extra padding for HUGE logo */
+  border-bottom: 2px solid #555;
 }
 
 .brand {
@@ -32,13 +32,13 @@ body {
   margin: 0 auto;
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 28px;
   padding: 0 12px;
 }
 
-/* Logo image - doubled in size */
+/* Logo image - HUGE */
 .logo-icon {
-  height: 120px; /* bigger logo */
+  height: 240px; /* massive logo size */
   width: auto;
   display: block;
 }
@@ -46,13 +46,13 @@ body {
 /* Brand text */
 .brand-text h1 {
   margin: 0;
-  font-size: 2rem; /* bumped up a little */
+  font-size: 2.4rem; /* larger heading to balance logo */
   letter-spacing: 1px;
 }
 
 .brand-text p {
-  margin: 6px 0 0;
-  font-size: 1.05rem;
+  margin: 10px 0 0;
+  font-size: 1.2rem;
   color: #e6e6e6;
   opacity: 0.95;
 }
@@ -60,17 +60,17 @@ body {
 /* Main content area */
 main {
   max-width: 900px;
-  margin: 32px auto;
+  margin: 40px auto;
   padding: 0 16px;
 }
 
 .intro p {
-  margin-top: 8px;
+  margin-top: 10px;
   color: var(--muted);
 }
 
 .services ul {
-  margin: 8px 0 0;
+  margin: 10px 0 0;
   padding-left: 1.25rem;
 }
 
@@ -79,22 +79,25 @@ footer {
   background: var(--footer-bg);
   color: #bbb;
   text-align: center;
-  padding: 12px;
-  margin-top: 32px;
+  padding: 14px;
+  margin-top: 40px;
   font-size: 0.9rem;
 }
 
 /* Responsive behavior */
-@media (max-width: 680px) {
+@media (max-width: 800px) {
   .brand {
     flex-direction: column;
     text-align: center;
-    gap: 12px;
+    gap: 20px;
   }
   .logo-icon {
-    height: 100px; /* still big on mobile */
+    height: 180px; /* still huge on smaller screens */
   }
   .brand-text h1 {
-    font-size: 1.5rem;
+    font-size: 2rem;
+  }
+  .brand-text p {
+    font-size: 1rem;
   }
 }
