@@ -1,11 +1,11 @@
-/* Skul'pted Engagement - Styles (logo inverted for dark header) */
+/* Skul'pted Engagement - Styles (graphite steel header) */
 
 :root {
   --bg: #f8f9fa;
   --text: #222;
   --muted: #666;
-  --header-bg: #000;
-  --footer-bg: #222;
+  --header-bg: #3a3a3c; /* graphite steel gray */
+  --footer-bg: #2b2b2d; /* darker steel */
 }
 
 * { box-sizing: border-box; }
@@ -35,14 +35,11 @@ body {
   padding: 0 12px;
 }
 
-/* Logo image — INVERTED so a black logo becomes visible on dark header */
+/* Logo image */
 .logo-icon {
-  height: 64px; /* main logo size */
+  height: 64px;
   width: auto;
   display: block;
-  /* invert black -> white on dark header */
-  -webkit-filter: invert(1) brightness(1.15);
-  filter: invert(1) brightness(1.15);
 }
 
 /* Brand text */
