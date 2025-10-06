@@ -1,123 +1,151 @@
-:root {
-  --graphite-dark: #2b2b2d;
-  --graphite-mid: #3a3a3c;
-  --graphite-light: #555;
+/* Final stylesheet - graphite background, fixed top nav, large centered logo */
+
+/* === Variables === */
+:root{
+  --graphite: #2f3133;
+  --graphite-dark: #232425;
   --accent: #ffb400;
-  --text: #f5f5f5;
-  --background: #1c1c1e;
+  --text-light: #f3f3f3;
+  --muted: #cfcfcf;
+
+  --border-thickness: 48px;  /* thick border size */
+  --nav-height: 56px;
+  --nav-padding: 12px;
+  --logo-desktop: 500px;     /* adjust logo size here */
+  --logo-tablet: 340px;
+  --logo-mobile: 260px;
 }
 
-* {
-  box-sizing: border-box;
-}
-
+/* === Base reset === */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  margin: 0;
-  background: var(--background);
-  color: var(--text);
-  line-height: 1.5;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  background: var(--graphite);
+  color: var(--text-light);
+  line-height: 1.6;
+
+  /* subtle texture */
+  background-image:
+    radial-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(0,0,0,0.05), rgba(255,255,255,0.01));
+  background-size: 10px 10px, cover;
+  background-blend-mode: overlay;
 }
 
-/* Fixed graphite top bar */
-.top-border {
-  background: repeating-linear-gradient(
-    45deg,
-    var(--graphite-dark),
-    var(--graphite-dark) 10px,
-    var(--graphite-mid) 10px,
-    var(--graphite-mid) 20px
-  );
-  border-bottom: 6px solid var(--graphite-light);
+/* skip link */
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: auto;
+  width: 1px; height: 1px;
+  overflow: hidden;
+}
+.skip-link:focus {
+  position: static; width: auto; height: auto;
+  margin: 1rem; padding: .5rem 1rem;
+  background: #000; color: #fff; z-index: 10000;
+}
+
+/* === Fixed top border + nav (inside the border) === */
+.top-border{
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 10;
-  padding: 12px 0;
+  top: 0; left: 0; width: 100%;
+  z-index: 9999;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06));
+  border-top: var(--border-thickness) solid var(--graphite-dark);
+  padding: var(--nav-padding) 0;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.45);
 }
 
-/* Navbar inside top border */
-.navbar ul {
+/* header inner container */
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* nav */
+.navbar { width: 100%; }
+.nav-list {
   list-style: none;
   display: flex;
   justify-content: center;
+  gap: 36px;
   margin: 0;
   padding: 0;
-  gap: 40px;
 }
-
-.navbar a {
-  color: var(--text);
+.nav-list li a {
+  color: var(--text-light);
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 700;
   font-size: 1.1rem;
-  transition: color 0.3s ease;
+  transition: color .18s ease;
+}
+.nav-list li a:hover { color: var(--accent); }
+
+/* mobile menu button */
+.menu-toggle {
+  display: none;
+  position: absolute;
+  right: 1rem;
+  top: 8px;
+  background: none;
+  border: none;
+  color: var(--text-light);
+  font-size: 1.6rem;
+  cursor: pointer;
 }
 
-.navbar a:hover {
-  color: var(--accent);
+/* compute required top spacing for main content:
+   header occupied area = border-thickness + nav-height + nav-padding*2
+*/
+:root {
+  --header-occupied: calc(var(--border-thickness) + var(--nav-height) + (var(--nav-padding) * 2));
 }
 
-/* Header with logo */
-.site-header {
-  background: var(--graphite-mid);
-  padding-top: 120px; /* space for fixed bar */
-  padding-bottom: 60px;
+/* === Main content spacing (push down below fixed top border) === */
+main{
+  max-width: 1100px;
+  margin: calc(var(--header-occupied) + 28px) auto 80px;
+  padding: 0 1rem;
   text-align: center;
 }
 
-.brand {
+/* === Brand (logo + title) === */
+.brand{
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 16px;
+  margin-bottom: 36px;
 }
 
-.logo-icon {
-  width: 600px; /* enlarged logo */
-  height: auto;
+.logo-icon{
+  height: var(--logo-desktop);
+  width: auto;
+  max-width: 92%;
+  display: block;
+  object-fit: contain;
+  box-shadow: 0 24px 48px rgba(0,0,0,0.6);
+  border-radius: 6px;
 }
 
-.brand-text h1 {
-  font-size: 3rem;
-  margin: 0;
-  color: var(--accent);
+.brand-text h1{
+  font-size: 2.8rem;
+  color: var(--text-light);
+  margin-top: 6px;
 }
+.brand-text p{ color: var(--muted); font-size: 1.1rem; }
 
-.brand-text p {
-  color: #ddd;
-  margin: 10px 0 0;
-  font-size: 1.2rem;
-}
+/* === Content sections === */
+section { max-width: 900px; margin: 0 auto 48px auto; text-align: left; }
+h2 { color: var(--text-light); font-size: 1.9rem; margin-bottom: 12px; border-bottom: 2px solid rgba(255,255,255,0.04); padding-bottom: 8px; }
+p, li { color: var(--muted); font-size: 1rem; }
+ul { padding-left: 1.6rem; }
 
-/* Main */
-main {
-  max-width: 900px;
-  margin: 40px auto;
-  padding: 0 16px;
-  text-align: center;
-}
-
-.intro p {
-  color: #ccc;
-}
-
-.services ul {
-  list-style: none;
-  padding: 0;
-}
-
-.services li {
-  margin: 8px 0;
-}
-
-/* Footer */
-footer {
-  background: var(--graphite-dark);
-  text-align: center;
-  padding: 20px;
-  font-size: 0.9rem;
-  color: #aaa;
-  border-top: 4px solid var(--graphite-light);
-}
+/* === Footer with*
