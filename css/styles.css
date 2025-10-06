@@ -1,11 +1,11 @@
-/* Skul'pted Engagement - Updated Styles */
-/* Graphite border, fixed top nav, doubled logo size */
+/* ===== Skul'pted Engagement - Final Style ===== */
+/* Graphite borders, fixed top nav, huge logo, visible content */
 
 :root {
   --graphite: #3a3a3c;
   --graphite-dark: #2b2b2d;
   --text: #222;
-  --muted: #666;
+  --muted: #555;
   --highlight: #ffb400;
   --bg: #f8f9fa;
 }
@@ -23,7 +23,7 @@ body {
   line-height: 1.6;
 }
 
-/* ===== Fixed Graphite Header ===== */
+/* ===== Fixed Top Header with Graphite Borders ===== */
 .site-header {
   position: fixed;
   top: 0;
@@ -32,25 +32,24 @@ body {
   background: var(--graphite);
   border-top: 16px solid var(--graphite-dark);
   border-bottom: 16px solid var(--graphite-dark);
-  z-index: 1000;
   text-align: center;
+  z-index: 1000;
   padding: 20px 0;
 }
 
-/* ===== Navigation ===== */
 .navbar ul {
   list-style: none;
   display: flex;
   justify-content: center;
-  gap: 40px;
-  padding: 0;
+  gap: 48px;
   margin: 0;
+  padding: 0;
 }
 
 .navbar a {
-  color: white;
+  color: #fff;
   font-weight: bold;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   text-decoration: none;
   transition: color 0.3s ease;
 }
@@ -61,29 +60,29 @@ body {
 
 /* ===== Main Content ===== */
 main {
-  margin-top: 250px; /* Push below the fixed header */
+  margin-top: 230px; /* Push below fixed header */
+  padding: 40px 20px;
   text-align: center;
-  padding: 20px;
 }
 
-/* ===== Brand / Logo ===== */
+/* ===== Brand Section ===== */
 .brand {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 40px;
+  margin-bottom: 60px;
 }
 
 .logo-icon {
-  height: 500px; /* doubled from last version */
+  height: 500px; /* large logo */
   width: auto;
   display: block;
 }
 
 .brand-text h1 {
-  margin-top: 20px;
   font-size: 3rem;
   color: var(--graphite-dark);
+  margin-top: 20px;
 }
 
 .brand-text p {
@@ -91,10 +90,10 @@ main {
   color: var(--muted);
 }
 
-/* ===== Sections ===== */
+/* ===== Content Sections ===== */
 section {
   max-width: 900px;
-  margin: 40px auto;
+  margin: 0 auto 60px auto;
   text-align: left;
 }
 
@@ -109,24 +108,24 @@ h2 {
 ul {
   list-style: disc;
   padding-left: 2rem;
-  color: var(--text);
 }
 
-/* ===== Footer ===== */
+/* ===== Footer with Bottom Border ===== */
 footer {
-  background: var(--graphite-dark);
+  background: var(--graphite);
+  border-top: 16px solid var(--graphite-dark);
+  border-bottom: 16px solid var(--graphite-dark);
   color: #ccc;
   text-align: center;
   padding: 20px;
-  margin-top: 60px;
   font-size: 0.9rem;
 }
 
-/* ===== Mobile ===== */
+/* ===== Responsive ===== */
 @media (max-width: 768px) {
   .navbar ul {
     flex-direction: column;
-    gap: 16px;
+    gap: 20px;
   }
 
   .logo-icon {
@@ -138,10 +137,10 @@ footer {
   }
 
   .brand-text p {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
   }
 
   main {
-    margin-top: 300px;
+    margin-top: 280px;
   }
 }
