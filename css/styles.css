@@ -1,149 +1,146 @@
-/* ===== Skul'pted Engagement - Graphite Full Background ===== */
+/* ===== Skul'pted Engagement - Final, stable stylesheet =====
+   - textured graphite full background
+   - thick top/bottom graphite borders
+   - fixed top nav with links inside border
+   - large centered logo (adjust --logo-height)
+   - content visible and readable
+*/
 
-:root {
-  --graphite: #3a3a3c;
-  --graphite-dark: #2b2b2d;
-  --text: #f1f1f1;
-  --muted: #ccc;
-  --highlight: #ffb400;
-  --bg: #2e2e30;
+/* ===== variables ===== */
+:root{
+  --graphite: #2e2e30;
+  --graphite-dark: #232425;
+  --accent: #ffb400;
+  --text-light: #f3f3f3;
+  --muted: #cfcfcf;
+
+  /* control sizes here */
+  --border-thickness: 48px;     /* thick top/bottom border */
+  --nav-height: 56px;           /* height of nav area (content) */
+  --nav-padding: 12px;          /* vertical padding inside header */
+  --logo-height: 1000px;        /* DESKTOP logo height (change here) */
+  --logo-tablet: 600px;
+  --logo-mobile: 320px;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+/* ===== base reset ===== */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  background-color: var(--graphite);
+  color: var(--text-light);
+  line-height:1.6;
+
+  /* subtle textured background (dots + soft gradient) */
+  background-image:
+    radial-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(0,0,0,0.06), rgba(255,255,255,0.01));
+  background-size: 10px 10px, cover;
+  background-blend-mode: overlay;
 }
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.6;
+/* skip link */
+.skip-link{position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden}
+.skip-link:focus{position:static;width:auto;height:auto;margin:1rem;padding:.5rem 1rem;background:#000;color:#fff;z-index:10000}
+
+/* ===== header (fixed) =====
+   Using border-top & border-bottom for the thick graphite bars.
+   We compute main margin-top using CSS calc below.
+*/
+.site-header{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:9999;
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.06));
+  border-top: var(--border-thickness) solid var(--graphite-dark);
+  border-bottom: var(--border-thickness) solid var(--graphite-dark);
+  padding: var(--nav-padding) 0;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.45);
 }
 
-/* ===== Fixed Top Header with Graphite Borders ===== */
-.site-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: var(--graphite-dark);
-  border-top: 16px solid var(--graphite);
-  border-bottom: 16px solid var(--graphite);
-  text-align: center;
-  z-index: 1000;
-  padding: 20px 0;
+/* header inner */
+.header-inner{max-width:1200px;margin:0 auto;padding:0 1rem;display:flex;align-items:center;justify-content:center}
+
+/* nav */
+.navbar{width:100%}
+.nav-list{display:flex;justify-content:center;gap:38px;list-style:none;padding:0;margin:0}
+.nav-list li a{
+  color:var(--text-light);
+  text-decoration:none;
+  font-weight:700;
+  font-size:1.1rem;
+  letter-spacing:0.2px;
+  padding:6px 2px;
+  transition: color .18s ease;
+}
+.nav-list li a:hover{color:var(--accent)}
+
+/* mobile menu button - hidden on desktop */
+.menu-toggle{display:none;background:none;border:none;color:var(--text-light);font-size:1.6rem;cursor:pointer;padding:8px}
+
+/* ===== space below fixed header =====
+   header-occupied = 2*border + nav-height + 2*nav-padding
+   We compute it to push main content below the fixed header.
+*/
+:root{
+  --header-occupied: calc((var(--border-thickness) * 2) + var(--nav-height) + (var(--nav-padding) * 2));
 }
 
-.navbar ul {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  gap: 48px;
-  margin: 0;
-  padding: 0;
+main{
+  max-width:1100px;
+  margin: calc(var(--header-occupied) + 28px) auto 80px auto; /* 28px extra breathing room */
+  padding: 0 1rem;
 }
 
-.navbar a {
-  color: #fff;
-  font-weight: bold;
-  font-size: 1.2rem;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
+/* ===== brand/logo centered ===== */
+.brand{display:flex;flex-direction:column;align-items:center;gap:18px;margin-bottom:36px}
 
-.navbar a:hover {
-  color: var(--highlight);
-}
-
-/* ===== Main Content ===== */
-main {
-  margin-top: 230px; /* Push below fixed header */
-  padding: 40px 20px;
-  text-align: center;
-}
-
-/* ===== Brand Section ===== */
-.brand {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 60px;
-}
-
-.logo-icon {
-  height: 500px;
+.logo-icon{
+  height: var(--logo-height);
   width: auto;
-  display: block;
+  display:block;
+  max-width:90%;
+  object-fit:contain;
+  image-rendering: optimizeQuality;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.5);
+  border-radius:6px;
 }
 
-.brand-text h1 {
-  font-size: 3rem;
-  color: #fff;
-  margin-top: 20px;
+/* brand text */
+.brand-text h1{font-size:2.8rem;color:var(--text-light);margin-top:8px}
+.brand-text p{color:var(--muted);font-size:1.15rem}
+
+/* content sections */
+section{max-width:900px;margin:0 auto 48px auto}
+h2{color:var(--text-light);font-size:1.8rem;margin-bottom:8px;border-bottom:2px solid rgba(255,255,255,0.04);padding-bottom:8px}
+p,li{color:var(--muted);font-size:1rem}
+ul{padding-left:1.6rem}
+
+/* footer with bottom graphite band (visual balance) */
+footer{
+  background:transparent;
+  color:var(--muted);
+  text-align:center;
+  padding:24px 12px;
+  margin-top:40px;
+  border-top: var(--border-thickness) solid var(--graphite-dark);
+  border-bottom: var(--border-thickness) solid var(--graphite-dark);
 }
 
-.brand-text p {
-  font-size: 1.4rem;
-  color: var(--muted);
+/* ===== responsive adjustments ===== */
+@media (max-width:1024px){
+  :root{--logo-height: var(--logo-tablet)}
+  .logo-icon{height:var(--logo-tablet)}
+  .nav-list{gap:28px}
 }
-
-/* ===== Content Sections ===== */
-section {
-  max-width: 900px;
-  margin: 0 auto 60px auto;
-  text-align: left;
-}
-
-h2 {
-  font-size: 2rem;
-  color: #fff;
-  border-bottom: 2px solid var(--graphite);
-  padding-bottom: 8px;
-  margin-bottom: 16px;
-}
-
-p, li {
-  color: var(--muted);
-}
-
-ul {
-  list-style: disc;
-  padding-left: 2rem;
-}
-
-/* ===== Footer with Bottom Border ===== */
-footer {
-  background: var(--graphite-dark);
-  border-top: 16px solid var(--graphite);
-  border-bottom: 16px solid var(--graphite);
-  color: #ccc;
-  text-align: center;
-  padding: 20px;
-  font-size: 0.9rem;
-}
-
-/* ===== Responsive ===== */
-@media (max-width: 768px) {
-  .navbar ul {
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .logo-icon {
-    height: 300px;
-  }
-
-  .brand-text h1 {
-    font-size: 2rem;
-  }
-
-  .brand-text p {
-    font-size: 1.2rem;
-  }
-
-  main {
-    margin-top: 280px;
-  }
+@media (max-width:768px){
+  :root{--logo-height: var(--logo-mobile)}
+  .logo-icon{height:var(--logo-mobile)}
+  .menu-toggle{display:block;position:absolute;right:18px;top:12px}
+  .nav-list{display:none;position:absolute;top:100%;right:0;background:linear-gradient(180deg,rgba(0,0,0,.45),rgba(0,0,0,.6));padding:18px;border-radius:8px;margin:8px}
+  .nav-list.showing{display:flex;flex-direction:column;align-items:center;gap:12px}
+  main{margin: calc(var(--header-occupied) + 36px) 12px 60px}
 }
