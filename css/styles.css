@@ -1,13 +1,14 @@
-/* Skul'pted Engagement - Styles (supersized logo + responsive nav) */
+/* Skul'pted Engagement - Thick graphite borders + supersized logo */
 
 :root {
   --bg: #f8f9fa;
   --text: #222;
   --muted: #666;
-  --header-bg: #3a3a3c; /* graphite steel gray */
-  --footer-bg: #2b2b2d; /* darker steel */
+  --header-bg: #3a3a3c;
+  --footer-bg: #2b2b2d;
 }
 
+/* Reset & Base */
 * { box-sizing: border-box; }
 
 body {
@@ -17,14 +18,42 @@ body {
   background: var(--bg);
   color: var(--text);
   line-height: 1.5;
+  position: relative;
 }
 
-/* Header with logo and site title */
+/* === Graphite Borders (top & bottom) === */
+body::before,
+body::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100px; /* border thickness */
+  background-color: #2b2b2d;
+  background-image: radial-gradient(circle at 1px 1px, #3f3f41 1px, transparent 0);
+  background-size: 20px 20px;
+}
+
+body::before {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+body::after {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+/* Header */
 .site-header {
   background: var(--header-bg);
   color: #fff;
-  padding: 60px 12px; /* space for giant logo */
+  padding: 80px 12px;
   border-bottom: 2px solid #555;
+  margin-top: 100px; /* space below top border */
 }
 
 .brand {
@@ -36,17 +65,17 @@ body {
   padding: 0 12px;
 }
 
-/* Logo image - GIANT */
+/* GIANT Logo */
 .logo-icon {
-  height: 400px; /* supersized */
+  height: 400px;
   width: auto;
   display: block;
 }
 
-/* Brand text */
+/* Brand Text */
 .brand-text h1 {
   margin: 0;
-  font-size: 3.2rem; /* scaled up */
+  font-size: 3.5rem;
   letter-spacing: 1px;
 }
 
@@ -57,7 +86,7 @@ body {
   opacity: 0.95;
 }
 
-/* NAVIGATION BAR */
+/* Navigation Bar */
 .navbar {
   background: #2e2e30;
   padding: 12px 0;
@@ -74,9 +103,7 @@ body {
   gap: 32px;
 }
 
-.navbar li {
-  display: inline;
-}
+.navbar li { display: inline; }
 
 .navbar a {
   text-decoration: none;
@@ -86,11 +113,8 @@ body {
   transition: color 0.3s ease;
 }
 
-.navbar a:hover {
-  color: #ffb400; /* gold highlight */
-}
+.navbar a:hover { color: #ffb400; }
 
-/* Hamburger for mobile */
 .menu-toggle {
   display: none;
   font-size: 2rem;
@@ -101,11 +125,12 @@ body {
   right: 20px;
 }
 
-/* Main content area */
+/* Main */
 main {
   max-width: 900px;
   margin: 56px auto;
   padding: 0 16px;
+  margin-bottom: 140px; /* space before bottom border */
 }
 
 .intro p {
@@ -128,7 +153,7 @@ footer {
   font-size: 0.9rem;
 }
 
-/* RESPONSIVE: Mobile */
+/* Responsive */
 @media (max-width: 768px) {
   .brand {
     flex-direction: column;
@@ -136,7 +161,7 @@ footer {
     gap: 28px;
   }
   .logo-icon {
-    height: 260px; /* still huge on smaller screens */
+    height: 260px;
   }
   .brand-text h1 {
     font-size: 2.4rem;
@@ -148,15 +173,11 @@ footer {
   .navbar ul {
     flex-direction: column;
     align-items: center;
-    display: none; /* hidden until toggled */
+    display: none;
     background: #2e2e30;
     padding: 20px 0;
     gap: 16px;
   }
-  .navbar ul.showing {
-    display: flex;
-  }
-  .menu-toggle {
-    display: block;
-  }
+  .navbar ul.showing { display: flex; }
+  .menu-toggle { display: block; }
 }
