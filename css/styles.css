@@ -1,13 +1,12 @@
-/* ===== Skul'pted Engagement - Final Style ===== */
-/* Graphite borders, fixed top nav, huge logo, visible content */
+/* ===== Skul'pted Engagement - Graphite Full Background ===== */
 
 :root {
   --graphite: #3a3a3c;
   --graphite-dark: #2b2b2d;
-  --text: #222;
-  --muted: #555;
+  --text: #f1f1f1;
+  --muted: #ccc;
   --highlight: #ffb400;
-  --bg: #f8f9fa;
+  --bg: #2e2e30;
 }
 
 * {
@@ -29,9 +28,9 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  background: var(--graphite);
-  border-top: 16px solid var(--graphite-dark);
-  border-bottom: 16px solid var(--graphite-dark);
+  background: var(--graphite-dark);
+  border-top: 16px solid var(--graphite);
+  border-bottom: 16px solid var(--graphite);
   text-align: center;
   z-index: 1000;
   padding: 20px 0;
@@ -74,14 +73,14 @@ main {
 }
 
 .logo-icon {
-  height: 500px; /* large logo */
+  height: 500px;
   width: auto;
   display: block;
 }
 
 .brand-text h1 {
   font-size: 3rem;
-  color: var(--graphite-dark);
+  color: #fff;
   margin-top: 20px;
 }
 
@@ -99,10 +98,14 @@ section {
 
 h2 {
   font-size: 2rem;
-  color: var(--graphite-dark);
-  border-bottom: 2px solid var(--graphite-dark);
+  color: #fff;
+  border-bottom: 2px solid var(--graphite);
   padding-bottom: 8px;
   margin-bottom: 16px;
+}
+
+p, li {
+  color: var(--muted);
 }
 
 ul {
@@ -112,9 +115,9 @@ ul {
 
 /* ===== Footer with Bottom Border ===== */
 footer {
-  background: var(--graphite);
-  border-top: 16px solid var(--graphite-dark);
-  border-bottom: 16px solid var(--graphite-dark);
+  background: var(--graphite-dark);
+  border-top: 16px solid var(--graphite);
+  border-bottom: 16px solid var(--graphite);
   color: #ccc;
   text-align: center;
   padding: 20px;
