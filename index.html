@@ -4,28 +4,13 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Skul'pted Engagement</title>
-  <meta name="description" content="Skul'pted Engagement — marketing, design and FAA Part 107 commercial aerial photography & videography." />
+  <meta name="description" content="Skul'pted Engagement — marketing, design and FAA Part 107 aerial media." />
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Skul'pted Engagement" />
-  <meta property="og:description" content="Marketing • Design • Aerial Media" />
-  <meta property="og:image" content="logo/skulpted-se-icon.svg" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://yourgithubusername.github.io/" />
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Skul'pted Engagement" />
-  <meta name="twitter:description" content="Marketing • Design • Aerial Media" />
-  <meta name="twitter:image" content="logo/skulpted-se-icon.svg" />
-
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-  <!-- Skip link -->
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- FIXED GRAPHITE HEADER -->
   <header class="site-header" role="banner">
     <div class="header-inner">
       <div class="brand">
@@ -36,12 +21,8 @@
         </div>
       </div>
 
-      <!-- Navigation -->
       <nav class="navbar" role="navigation" aria-label="Main navigation">
-        <button id="menu-toggle" class="menu-toggle" aria-expanded="false" aria-controls="menu">
-          <span aria-hidden="true">☰</span>
-          <span class="sr-only">Toggle navigation</span>
-        </button>
+        <button id="menu-toggle" class="menu-toggle" aria-expanded="false" aria-controls="menu">☰</button>
         <ul id="menu" class="menu">
           <li><a href="index.html">Home</a></li>
           <li><a href="faq.html">FAQ</a></li>
@@ -53,14 +34,13 @@
     </div>
   </header>
 
-  <!-- Main content -->
   <main id="main">
     <section class="intro">
       <h2>What We Do</h2>
       <p>
         At <strong>Skul'pted Engagement</strong> we deliver creative marketing,
-        brand design, and FAA Part 107 certified aerial imaging — logos, beer labels,
-        social media management, and high-end drone photos & video.
+        brand design, and FAA Part 107 certified aerial media — logos, social media,
+        drone photography & video.
       </p>
     </section>
 
@@ -71,37 +51,23 @@
         <li>Marketing & Social Media Management</li>
         <li>Brand Identity, Logos & Packaging</li>
         <li>Commercial Drone Photography & Videography (Part 107)</li>
-        <li>Photo retouching, video editing, and deliverables</li>
+        <li>Photo retouching, video editing, deliverables</li>
       </ul>
     </section>
   </main>
 
-  <!-- Footer -->
-  <footer role="contentinfo">
+  <footer>
     <p>&copy; 2025 Skul'pted Engagement — Midway, GA</p>
   </footer>
 
-  <!-- Nav Toggle Script -->
   <script>
-    (function () {
-      const menuToggle = document.getElementById('menu-toggle');
+    (function(){
+      const btn = document.getElementById('menu-toggle');
       const menu = document.getElementById('menu');
-
-      if (!menuToggle || !menu) return;
-
-      menuToggle.addEventListener('click', () => {
-        const isOpen = menu.classList.toggle('showing');
-        menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-      });
-
-      // Close on link click
-      menu.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-          if (menu.classList.contains('showing')) {
-            menu.classList.remove('showing');
-            menuToggle.setAttribute('aria-expanded', 'false');
-          }
-        });
+      if (!btn || !menu) return;
+      btn.addEventListener('click', () => {
+        menu.classList.toggle('showing');
+        btn.setAttribute('aria-expanded', menu.classList.contains('showing'));
       });
     })();
   </script>
