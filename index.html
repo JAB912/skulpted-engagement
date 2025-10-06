@@ -1,18 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Skul'pted Engagement</title>
-    <link rel="stylesheet" href="css/style.css" />
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Skul'pted Engagement</title>
+  <meta name="description" content="Skul'pted Engagement — marketing, design, and FAA Part 107 aerial photography & videography." />
 
-  <body>
-    <header class="site-header">
-      <!-- Fixed graphite border with nav links -->
-      <div class="top-border">
-        <nav class="navbar">
-          <ul>
+  <!-- Make sure this path matches exactly: css/style.css -->
+  <link rel="stylesheet" href="css/style.css" />
+  <!-- If you still see old CSS after pushing, change the line above to:
+       <link rel="stylesheet" href="css/style.css?v=2" />
+  -->
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Fixed top graphite bar with nav inside -->
+  <header class="site-header" role="banner" aria-hidden="false">
+    <div class="top-border">
+      <div class="header-inner">
+        <button id="menu-toggle" class="menu-toggle" aria-expanded="false" aria-controls="main-nav">
+          ☰ <span class="sr-only">Menu</span>
+        </button>
+
+        <nav class="navbar" role="navigation" aria-label="Main navigation">
+          <ul id="main-nav" class="nav-list">
             <li><a href="index.html">Home</a></li>
             <li><a href="faq.html">FAQ</a></li>
             <li><a href="blog.html">Blog</a></li>
@@ -21,40 +33,67 @@
           </ul>
         </nav>
       </div>
+    </div>
+  </header>
 
-      <!-- Logo + Brand Text -->
-      <div class="brand">
-        <img src="logo/skulpted-se-icon.svg" alt="Skul'pted Engagement Logo" class="logo-icon" />
-        <div class="brand-text">
-          <h1>Skul'pted Engagement</h1>
-          <p>Creative Marketing • Brand Design • Aerial Imaging</p>
-        </div>
+  <!-- Main content (logo centered, then sections) -->
+  <main id="main">
+    <section class="brand">
+      <img src="logo/skulpted-se-icon.svg" alt="Skul'pted Engagement logo" class="logo-icon" />
+      <div class="brand-text">
+        <h1>Skul'pted Engagement</h1>
+        <p>Marketing • Design • Aerial Media</p>
       </div>
-    </header>
+    </section>
 
-    <main>
-      <section class="intro">
-        <h2>What We Do</h2>
-        <p>
-          At <strong>Skul'pted Engagement</strong>, we deliver creative marketing,
-          brand design, and FAA Part 107 certified aerial imaging — logos, beer
-          labels, social media management, and high-end drone photos & video.
-        </p>
-      </section>
+    <section class="intro">
+      <h2>What We Do</h2>
+      <p>
+        At <strong>Skul'pted Engagement</strong>, we deliver creative marketing,
+        brand design, and FAA Part 107 certified aerial imaging — logos, beer labels,
+        social media management, and high-end drone photos & video.
+      </p>
+    </section>
 
-      <section class="services">
-        <h2>Our Services</h2>
-        <ul>
-          <li>Logo & Brand Design</li>
-          <li>Social Media Management</li>
-          <li>Product & Label Design</li>
-          <li>Drone Photography & Videography</li>
-        </ul>
-      </section>
-    </main>
+    <section class="services">
+      <h2>Services</h2>
+      <ul>
+        <li>Website Design & Management</li>
+        <li>Marketing & Social Media Management</li>
+        <li>Brand Identity, Logos & Packaging</li>
+        <li>Commercial Drone Photography & Videography (Part 107)</li>
+        <li>Photo Retouching, Video Editing, and Deliverables</li>
+      </ul>
+    </section>
+  </main>
 
-    <footer>
-      <p>© 2025 Skul'pted Engagement. All Rights Reserved.</p>
-    </footer>
-  </body>
+  <!-- Footer -->
+  <footer role="contentinfo">
+    <p>&copy; 2025 Skul'pted Engagement — Midway, GA</p>
+  </footer>
+
+  <!-- Small JS: mobile menu toggle -->
+  <script>
+    (function () {
+      const btn = document.getElementById('menu-toggle');
+      const menu = document.getElementById('main-nav');
+      if (!btn || !menu) return;
+
+      btn.addEventListener('click', () => {
+        const showing = menu.classList.toggle('showing');
+        btn.setAttribute('aria-expanded', showing ? 'true' : 'false');
+      });
+
+      // Close mobile menu on link click
+      menu.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+          if (menu.classList.contains('showing')) {
+            menu.classList.remove('showing');
+            btn.setAttribute('aria-expanded', 'false');
+          }
+        });
+      });
+    })();
+  </script>
+</body>
 </html>
