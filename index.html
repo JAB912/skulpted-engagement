@@ -19,133 +19,8 @@
   <meta name="twitter:description" content="Marketing • Design • Aerial Media" />
   <meta name="twitter:image" content="logo/skulpted-se-icon.svg" />
 
-  <style>
-    /* ===== Base Reset ===== */
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      line-height: 1.6;
-      color: #222;
-      background-color: #f9f9f9;
-    }
-    a { color: #0066cc; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    h1, h2 { margin-top: 0; }
-
-    /* ===== Skip Link ===== */
-    .skip-link {
-      position: absolute;
-      left: -999px;
-      top: auto;
-      width: 1px;
-      height: 1px;
-      overflow: hidden;
-    }
-    .skip-link:focus {
-      position: static;
-      width: auto;
-      height: auto;
-      margin: 1rem;
-      padding: 0.5rem 1rem;
-      background: #000;
-      color: #fff;
-      z-index: 1000;
-    }
-
-    /* ===== Header ===== */
-    .site-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem;
-      background: #fff;
-      border-bottom: 1px solid #ddd;
-    }
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-    .brand img {
-      width: 50px;
-      height: auto;
-    }
-    .brand-text h1 {
-      margin: 0;
-      font-size: 1.25rem;
-    }
-    .brand-text p {
-      margin: 0;
-      font-size: 0.875rem;
-      color: #555;
-    }
-
-    /* ===== Nav ===== */
-    .navbar {
-      position: relative;
-    }
-    .menu-toggle {
-      display: none;
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
-    .menu {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      gap: 1rem;
-    }
-    .menu li a {
-      font-weight: 500;
-      padding: 0.25rem 0.5rem;
-    }
-
-    /* ===== Mobile Nav ===== */
-    @media (max-width: 768px) {
-      .menu-toggle {
-        display: block;
-      }
-      .menu {
-        display: none;
-        flex-direction: column;
-        background: #fff;
-        position: absolute;
-        right: 0;
-        top: 100%;
-        padding: 1rem;
-        border: 1px solid #ddd;
-      }
-      .menu.showing {
-        display: flex;
-      }
-    }
-
-    /* ===== Main ===== */
-    main {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
-    section {
-      margin-bottom: 2rem;
-    }
-    ul {
-      list-style: disc;
-      padding-left: 1.5rem;
-    }
-
-    /* ===== Footer ===== */
-    footer {
-      background: #222;
-      color: #fff;
-      text-align: center;
-      padding: 1rem;
-      font-size: 0.875rem;
-    }
-  </style>
+  <!-- External CSS -->
+  <link rel="stylesheet" href="css/styles.css?v=1" />
 </head>
 <body>
   <!-- Skip link -->
@@ -154,7 +29,7 @@
   <!-- Header -->
   <header class="site-header" role="banner">
     <div class="brand">
-      <img src="logo/skulpted-se-icon.svg" alt="Skul'pted Engagement logo icon" loading="lazy" />
+      <img src="logo/skulpted-se-icon.svg" alt="Skul'pted Engagement logo icon" loading="lazy" class="logo-icon" />
       <div class="brand-text">
         <h1>Skul'pted Engagement</h1>
         <p>Marketing • Design • Aerial Media</p>
@@ -210,7 +85,6 @@
     (function () {
       const menuToggle = document.getElementById('menu-toggle');
       const menu = document.getElementById('menu');
-
       if (!menuToggle || !menu) return;
 
       menuToggle.addEventListener('click', () => {
@@ -222,12 +96,4 @@
       menu.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
           if (menu.classList.contains('showing')) {
-            menu.classList.remove('showing');
-            menuToggle.setAttribute('aria-expanded', 'false');
-          }
-        });
-      });
-    })();
-  </script>
-</body>
-</html>
+            menu.classList.remove('showing'
