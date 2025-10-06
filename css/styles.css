@@ -1,214 +1,167 @@
-/* ================================
-   Skul'pted Engagement — Stylesheet
-   ================================ */
+/* Skul'pted Engagement - Graphite Borders + Supersized Logo */
 
-/* ----- Root Colors ----- */
 :root {
-  --graphite: #2b2b2d;
-  --graphite-light: #3a3a3c;
-  --gold: #ffb400;
-  --text: #f1f1f1;
-  --muted: #ccc;
-  --bg: #f9f9f9;
+  --bg: #f8f9fa;
+  --text: #222;
+  --muted: #666;
+  --header-bg: #3a3a3c; /* graphite steel gray */
+  --footer-bg: #2b2b2d; /* darker steel */
 }
 
-/* ----- Base Reset ----- */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+/* Reset */
+* { box-sizing: border-box; }
 
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  color: #222;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
   background: var(--bg);
-  line-height: 1.6;
-}
-
-/* Skip link accessibility */
-.skip-link {
-  position: absolute;
-  left: -999px;
-  top: auto;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-}
-.skip-link:focus {
-  position: static;
-  width: auto;
-  height: auto;
-  margin: 1rem;
-  padding: 0.5rem 1rem;
-  background: #000;
-  color: #fff;
-  z-index: 1000;
-}
-
-/* ================================
-   HEADER (Fixed Graphite Bar)
-   ================================ */
-.site-header {
-  background: linear-gradient(180deg, var(--graphite), var(--graphite-light));
   color: var(--text);
-  border-top: 20px solid var(--graphite-light);
-  border-bottom: 20px solid var(--graphite-light);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 9999;
+  line-height: 1.5;
+
+  /* graphite borders at top and bottom */
+  border-top: 40px solid transparent;
+  border-bottom: 40px solid transparent;
+  background-image:
+    linear-gradient(#4a4a4a, #2e2e2e),
+    linear-gradient(#4a4a4a, #2e2e2e);
+  background-repeat: no-repeat;
+  background-size: 100% 40px, 100% 40px;
+  background-position: top, bottom;
 }
 
-.header-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+/* Header */
+.site-header {
+  background: var(--header-bg);
+  color: #fff;
+  padding: 80px 16px;
+  border-bottom: 2px solid #555;
+}
+
+.brand {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0.75rem 1.5rem;
-}
-
-/* ----- Logo and Branding ----- */
-.brand {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 40px;
 }
 
+/* Supersized Logo */
 .logo-icon {
-  height: 200px; /* 4× typical logo size */
+  height: 400px; /* ~4× typical size */
   width: auto;
+  display: block;
 }
 
+/* Brand Text */
 .brand-text h1 {
-  font-size: 2rem;
+  margin: 0;
+  font-size: 3.2rem;
   letter-spacing: 1px;
-  margin-bottom: 0.25rem;
-  color: #fff;
 }
 
 .brand-text p {
-  color: var(--muted);
-  font-size: 1rem;
+  margin: 16px 0 0;
+  font-size: 1.4rem;
+  color: #e6e6e6;
+  opacity: 0.95;
 }
 
-/* ================================
-   NAVIGATION
-   ================================ */
+/* Navigation */
 .navbar {
-  position: relative;
+  background: #2e2e30;
+  padding: 12px 0;
+  margin-top: 20px;
 }
 
-.menu {
+.navbar ul {
   list-style: none;
+  margin: 0;
+  padding: 0;
   display: flex;
-  gap: 1.5rem;
+  justify-content: center;
+  gap: 32px;
 }
 
-.menu li a {
-  color: var(--text);
+.navbar a {
   text-decoration: none;
-  font-weight: 600;
+  color: #fff;
   font-size: 1.1rem;
+  font-weight: bold;
   transition: color 0.3s ease;
 }
 
-.menu li a:hover {
-  color: var(--gold);
+.navbar a:hover {
+  color: #ffb400;
 }
 
-/* Hamburger Button */
+/* Hamburger */
 .menu-toggle {
   display: none;
-  background: none;
-  border: none;
   font-size: 2rem;
-  color: var(--text);
+  color: #fff;
   cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 20px;
 }
 
-/* ================================
-   MAIN CONTENT
-   ================================ */
+/* Main Content */
 main {
   max-width: 900px;
-  margin: 280px auto 4rem; /* account for fixed header height */
-  padding: 0 1rem;
-}
-
-h2 {
-  color: var(--graphite);
-  margin-bottom: 0.75rem;
+  margin: 56px auto;
+  padding: 0 16px;
 }
 
 .intro p {
-  color: #555;
-  margin-bottom: 2rem;
+  margin-top: 12px;
+  color: var(--muted);
 }
 
 .services ul {
-  list-style: disc;
-  padding-left: 1.5rem;
+  margin-top: 12px;
+  padding-left: 1.25rem;
 }
 
-.services li {
-  margin-bottom: 0.5rem;
-}
-
-/* ================================
-   FOOTER
-   ================================ */
+/* Footer */
 footer {
-  background: var(--graphite);
-  color: var(--text);
+  background: var(--footer-bg);
+  color: #bbb;
   text-align: center;
-  padding: 1rem;
-  border-top: 20px solid var(--graphite-light);
+  padding: 20px;
+  margin-top: 56px;
   font-size: 0.9rem;
 }
 
-/* ================================
-   RESPONSIVE DESIGN
-   ================================ */
-@media (max-width: 1024px) {
+/* Mobile */
+@media (max-width: 768px) {
+  .brand {
+    flex-direction: column;
+    text-align: center;
+    gap: 28px;
+  }
   .logo-icon {
-    height: 160px;
+    height: 260px;
   }
   .brand-text h1 {
-    font-size: 1.6rem;
+    font-size: 2.4rem;
   }
-}
+  .brand-text p {
+    font-size: 1.2rem;
+  }
 
-@media (max-width: 768px) {
-  .header-inner {
+  .navbar ul {
     flex-direction: column;
     align-items: center;
-    text-align: center;
-  }
-
-  .navbar {
-    margin-top: 1rem;
-  }
-
-  .menu {
     display: none;
-    flex-direction: column;
-    gap: 1rem;
-    background: var(--graphite);
-    padding: 1.5rem;
-    border-radius: 8px;
+    background: #2e2e30;
+    padding: 20px 0;
+    gap: 16px;
   }
-
-  .menu.showing {
+  .navbar ul.showing {
     display: flex;
   }
-
   .menu-toggle {
     display: block;
-    position: absolute;
-    right: 1rem;
-    top: 1rem;
   }
 }
