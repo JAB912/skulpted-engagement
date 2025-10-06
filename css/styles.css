@@ -1,16 +1,20 @@
-/* ===== Skul'pted Engagement - Styles ===== */
+/* Skul'pted Engagement - Updated Styles */
+/* Graphite border, fixed top nav, doubled logo size */
 
 :root {
-  --bg: #f8f9fa;
+  --graphite: #3a3a3c;
+  --graphite-dark: #2b2b2d;
   --text: #222;
   --muted: #666;
-  --header-bg: #2f2f31; /* graphite-like */
-  --footer-bg: #2b2b2d;
-  --border-thickness: 20px;
+  --highlight: #ffb400;
+  --bg: #f8f9fa;
 }
 
-/* Reset + Base */
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 body {
   font-family: Arial, Helvetica, sans-serif;
@@ -19,62 +23,67 @@ body {
   line-height: 1.6;
 }
 
-/* ===== Top Graphite Border / Nav Bar ===== */
+/* ===== Fixed Graphite Header ===== */
 .site-header {
-  background: var(--header-bg);
-  color: #fff;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  border-top: var(--border-thickness) solid #3e3e3f;
-  border-bottom: var(--border-thickness) solid #3e3e3f;
+  background: var(--graphite);
+  border-top: 16px solid var(--graphite-dark);
+  border-bottom: 16px solid var(--graphite-dark);
   z-index: 1000;
+  text-align: center;
+  padding: 20px 0;
 }
 
-.navbar {
+/* ===== Navigation ===== */
+.navbar ul {
+  list-style: none;
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 14px 0;
-}
-
-.navbar ul {
-  display: flex;
-  list-style: none;
-  gap: 2rem;
+  gap: 40px;
+  padding: 0;
+  margin: 0;
 }
 
 .navbar a {
+  color: white;
+  font-weight: bold;
+  font-size: 1.1rem;
   text-decoration: none;
-  color: #fff;
-  font-size: 1.15rem;
-  font-weight: 600;
   transition: color 0.3s ease;
 }
 
 .navbar a:hover {
-  color: #ffb400; /* gold highlight */
+  color: var(--highlight);
 }
 
-/* ===== Logo Section ===== */
+/* ===== Main Content ===== */
+main {
+  margin-top: 250px; /* Push below the fixed header */
+  text-align: center;
+  padding: 20px;
+}
+
+/* ===== Brand / Logo ===== */
 .brand {
-  margin-top: 180px; /* push below fixed header */
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 24px;
+  margin-top: 40px;
 }
 
 .logo-icon {
-  height: 600px; /* doubled from ~300px */
+  height: 500px; /* doubled from last version */
   width: auto;
   display: block;
 }
 
 .brand-text h1 {
-  font-size: 3.2rem;
-  margin-bottom: 8px;
+  margin-top: 20px;
+  font-size: 3rem;
+  color: var(--graphite-dark);
 }
 
 .brand-text p {
@@ -82,51 +91,57 @@ body {
   color: var(--muted);
 }
 
-/* ===== Main Content ===== */
-main {
+/* ===== Sections ===== */
+section {
   max-width: 900px;
   margin: 40px auto;
-  padding: 0 16px;
-  text-align: center;
-}
-
-.intro h2, .services h2 {
-  color: #111;
-  margin-bottom: 12px;
-}
-
-.services ul {
-  list-style: disc;
-  padding-left: 1.5rem;
   text-align: left;
+}
+
+h2 {
+  font-size: 2rem;
+  color: var(--graphite-dark);
+  border-bottom: 2px solid var(--graphite-dark);
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+}
+
+ul {
+  list-style: disc;
+  padding-left: 2rem;
+  color: var(--text);
 }
 
 /* ===== Footer ===== */
 footer {
-  background: var(--footer-bg);
+  background: var(--graphite-dark);
   color: #ccc;
   text-align: center;
-  padding: 24px;
-  margin-top: 80px;
+  padding: 20px;
+  margin-top: 60px;
   font-size: 0.9rem;
 }
 
-/* ===== Responsive ===== */
+/* ===== Mobile ===== */
 @media (max-width: 768px) {
   .navbar ul {
     flex-direction: column;
-    gap: 1rem;
+    gap: 16px;
   }
 
   .logo-icon {
-    height: 380px; /* still large but fits mobile */
+    height: 300px;
   }
 
   .brand-text h1 {
-    font-size: 2.4rem;
+    font-size: 2rem;
   }
 
   .brand-text p {
     font-size: 1.1rem;
+  }
+
+  main {
+    margin-top: 300px;
   }
 }
