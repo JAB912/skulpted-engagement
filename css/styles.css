@@ -1,183 +1,214 @@
-/* Skul'pted Engagement - Thick graphite borders + supersized logo */
+/* ================================
+   Skul'pted Engagement — Stylesheet
+   ================================ */
 
+/* ----- Root Colors ----- */
 :root {
-  --bg: #f8f9fa;
-  --text: #222;
-  --muted: #666;
-  --header-bg: #3a3a3c;
-  --footer-bg: #2b2b2d;
+  --graphite: #2b2b2d;
+  --graphite-light: #3a3a3c;
+  --gold: #ffb400;
+  --text: #f1f1f1;
+  --muted: #ccc;
+  --bg: #f9f9f9;
 }
 
-/* Reset & Base */
-* { box-sizing: border-box; }
-
-body {
-  font-family: Arial, Helvetica, sans-serif;
+/* ----- Base Reset ----- */
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: #222;
   background: var(--bg);
+  line-height: 1.6;
+}
+
+/* Skip link accessibility */
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.skip-link:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 1rem;
+  padding: 0.5rem 1rem;
+  background: #000;
+  color: #fff;
+  z-index: 1000;
+}
+
+/* ================================
+   HEADER (Fixed Graphite Bar)
+   ================================ */
+.site-header {
+  background: linear-gradient(180deg, var(--graphite), var(--graphite-light));
   color: var(--text);
-  line-height: 1.5;
-  position: relative;
-}
-
-/* === Graphite Borders (top & bottom) === */
-body::before,
-body::after {
-  content: "";
-  display: block;
-  width: 100%;
-  height: 100px; /* border thickness */
-  background-color: #2b2b2d;
-  background-image: radial-gradient(circle at 1px 1px, #3f3f41 1px, transparent 0);
-  background-size: 20px 20px;
-}
-
-body::before {
+  border-top: 20px solid var(--graphite-light);
+  border-bottom: 20px solid var(--graphite-light);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   position: fixed;
   top: 0;
-  left: 0;
-  z-index: 1000;
+  width: 100%;
+  z-index: 9999;
 }
 
-body::after {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  z-index: 1000;
-}
-
-/* Header */
-.site-header {
-  background: var(--header-bg);
-  color: #fff;
-  padding: 80px 12px;
-  border-bottom: 2px solid #555;
-  margin-top: 100px; /* space below top border */
-}
-
-.brand {
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0.75rem 1.5rem;
+}
+
+/* ----- Logo and Branding ----- */
+.brand {
   display: flex;
   align-items: center;
-  gap: 40px;
-  padding: 0 12px;
+  gap: 1rem;
 }
 
-/* GIANT Logo */
 .logo-icon {
-  height: 400px;
+  height: 200px; /* 4× typical logo size */
   width: auto;
-  display: block;
 }
 
-/* Brand Text */
 .brand-text h1 {
-  margin: 0;
-  font-size: 3.5rem;
+  font-size: 2rem;
   letter-spacing: 1px;
+  margin-bottom: 0.25rem;
+  color: #fff;
 }
 
 .brand-text p {
-  margin: 16px 0 0;
-  font-size: 1.4rem;
-  color: #e6e6e6;
-  opacity: 0.95;
+  color: var(--muted);
+  font-size: 1rem;
 }
 
-/* Navigation Bar */
+/* ================================
+   NAVIGATION
+   ================================ */
 .navbar {
-  background: #2e2e30;
-  padding: 12px 0;
-  margin-top: 20px;
   position: relative;
 }
 
-.navbar ul {
+.menu {
   list-style: none;
-  margin: 0;
-  padding: 0;
   display: flex;
-  justify-content: center;
-  gap: 32px;
+  gap: 1.5rem;
 }
 
-.navbar li { display: inline; }
-
-.navbar a {
+.menu li a {
+  color: var(--text);
   text-decoration: none;
-  color: #fff;
+  font-weight: 600;
   font-size: 1.1rem;
-  font-weight: bold;
   transition: color 0.3s ease;
 }
 
-.navbar a:hover { color: #ffb400; }
-
-.menu-toggle {
-  display: none;
-  font-size: 2rem;
-  color: #fff;
-  cursor: pointer;
-  position: absolute;
-  top: 10px;
-  right: 20px;
+.menu li a:hover {
+  color: var(--gold);
 }
 
-/* Main */
+/* Hamburger Button */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: var(--text);
+  cursor: pointer;
+}
+
+/* ================================
+   MAIN CONTENT
+   ================================ */
 main {
   max-width: 900px;
-  margin: 56px auto;
-  padding: 0 16px;
-  margin-bottom: 140px; /* space before bottom border */
+  margin: 280px auto 4rem; /* account for fixed header height */
+  padding: 0 1rem;
+}
+
+h2 {
+  color: var(--graphite);
+  margin-bottom: 0.75rem;
 }
 
 .intro p {
-  margin-top: 12px;
-  color: var(--muted);
+  color: #555;
+  margin-bottom: 2rem;
 }
 
 .services ul {
-  margin: 12px 0 0;
-  padding-left: 1.25rem;
+  list-style: disc;
+  padding-left: 1.5rem;
 }
 
-/* Footer */
+.services li {
+  margin-bottom: 0.5rem;
+}
+
+/* ================================
+   FOOTER
+   ================================ */
 footer {
-  background: var(--footer-bg);
-  color: #bbb;
+  background: var(--graphite);
+  color: var(--text);
   text-align: center;
-  padding: 20px;
-  margin-top: 56px;
+  padding: 1rem;
+  border-top: 20px solid var(--graphite-light);
   font-size: 0.9rem;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .brand {
-    flex-direction: column;
-    text-align: center;
-    gap: 28px;
-  }
+/* ================================
+   RESPONSIVE DESIGN
+   ================================ */
+@media (max-width: 1024px) {
   .logo-icon {
-    height: 260px;
+    height: 160px;
   }
   .brand-text h1 {
-    font-size: 2.4rem;
+    font-size: 1.6rem;
   }
-  .brand-text p {
-    font-size: 1.2rem;
-  }
+}
 
-  .navbar ul {
+@media (max-width: 768px) {
+  .header-inner {
     flex-direction: column;
     align-items: center;
-    display: none;
-    background: #2e2e30;
-    padding: 20px 0;
-    gap: 16px;
+    text-align: center;
   }
-  .navbar ul.showing { display: flex; }
-  .menu-toggle { display: block; }
+
+  .navbar {
+    margin-top: 1rem;
+  }
+
+  .menu {
+    display: none;
+    flex-direction: column;
+    gap: 1rem;
+    background: var(--graphite);
+    padding: 1.5rem;
+    border-radius: 8px;
+  }
+
+  .menu.showing {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+  }
 }
