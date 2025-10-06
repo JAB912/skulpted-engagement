@@ -19,37 +19,38 @@
   <meta name="twitter:description" content="Marketing • Design • Aerial Media" />
   <meta name="twitter:image" content="logo/skulpted-se-icon.svg" />
 
-  <!-- External CSS -->
-  <link rel="stylesheet" href="css/styles.css?v=1" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <!-- Skip link -->
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- Header -->
+  <!-- FIXED GRAPHITE HEADER -->
   <header class="site-header" role="banner">
-    <div class="brand">
-      <img src="logo/skulpted-se-icon.svg" alt="Skul'pted Engagement logo icon" loading="lazy" class="logo-icon" />
-      <div class="brand-text">
-        <h1>Skul'pted Engagement</h1>
-        <p>Marketing • Design • Aerial Media</p>
+    <div class="header-inner">
+      <div class="brand">
+        <img src="logo/skulpted-se-icon.svg" alt="Skul'pted Engagement logo" class="logo-icon" />
+        <div class="brand-text">
+          <h1>Skul'pted Engagement</h1>
+          <p>Marketing • Design • Aerial Media</p>
+        </div>
       </div>
+
+      <!-- Navigation -->
+      <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <button id="menu-toggle" class="menu-toggle" aria-expanded="false" aria-controls="menu">
+          <span aria-hidden="true">☰</span>
+          <span class="sr-only">Toggle navigation</span>
+        </button>
+        <ul id="menu" class="menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="recent-work.html">Recent Work</a></li>
+        </ul>
+      </nav>
     </div>
-
-    <nav class="navbar" role="navigation" aria-label="Main navigation">
-      <button id="menu-toggle" class="menu-toggle" aria-expanded="false" aria-controls="menu">
-        <span aria-hidden="true">☰</span>
-        <span class="sr-only">Toggle navigation</span>
-      </button>
-
-      <ul id="menu" class="menu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="faq.html">FAQ</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
-        <li><a href="recent-work.html">Recent Work</a></li>
-      </ul>
-    </nav>
   </header>
 
   <!-- Main content -->
@@ -85,6 +86,7 @@
     (function () {
       const menuToggle = document.getElementById('menu-toggle');
       const menu = document.getElementById('menu');
+
       if (!menuToggle || !menu) return;
 
       menuToggle.addEventListener('click', () => {
@@ -96,4 +98,12 @@
       menu.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
           if (menu.classList.contains('showing')) {
-            menu.classList.remove('showing'
+            menu.classList.remove('showing');
+            menuToggle.setAttribute('aria-expanded', 'false');
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
