@@ -5,15 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Skul'pted Engagement</title>
   <meta name="description" content="Skul'pted Engagement — marketing, design, and FAA Part 107 aerial photography & videography." />
-  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- link to stylesheet (cache-buster v=1; bump if you don't see updates) -->
+  <link rel="stylesheet" href="css/style.css?v=1" />
 </head>
 
 <body>
-  <!-- ===== Header with Graphite Border and Nav ===== -->
-  <header class="site-header" role="banner">
+  <!-- skip link -->
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ===== FIXED TOP BAR (graphite border + nav inside) ===== -->
+  <header class="site-header" role="banner" aria-hidden="false">
     <div class="header-inner">
       <nav class="navbar" role="navigation" aria-label="Main navigation">
-        <ul>
+        <button id="menu-toggle" class="menu-toggle" aria-expanded="false" aria-controls="main-nav">☰</button>
+        <ul id="main-nav" class="nav-list">
           <li><a href="index.html">Home</a></li>
           <li><a href="faq.html">FAQ</a></li>
           <li><a href="blog.html">Blog</a></li>
@@ -24,9 +30,10 @@
     </div>
   </header>
 
-  <!-- ===== Main Content ===== -->
+  <!-- ===== MAIN (logo centered, then content) ===== -->
   <main id="main">
     <section class="brand">
+      <!-- logo: keep the path 'logo/skulpted-se-icon.svg' or update to your actual path -->
       <img src="logo/skulpted-se-icon.svg" alt="Skul'pted Engagement logo" class="logo-icon" />
       <div class="brand-text">
         <h1>Skul'pted Engagement</h1>
@@ -55,9 +62,31 @@
     </section>
   </main>
 
-  <!-- ===== Footer ===== -->
+  <!-- ===== FOOTER ===== -->
   <footer role="contentinfo">
     <p>&copy; 2025 Skul'pted Engagement — Midway, GA</p>
   </footer>
+
+  <!-- ===== mobile nav toggle script (keeps things simple) ===== -->
+  <script>
+    (function () {
+      const btn = document.getElementById('menu-toggle');
+      const menu = document.getElementById('main-nav');
+      if (!btn || !menu) return;
+      btn.addEventListener('click', () => {
+        const showing = menu.classList.toggle('showing');
+        btn.setAttribute('aria-expanded', showing ? 'true' : 'false');
+      });
+      // close menu when a link is clicked (mobile)
+      menu.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+          if (menu.classList.contains('showing')) {
+            menu.classList.remove('showing');
+            btn.setAttribute('aria-expanded', 'false');
+          }
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
