@@ -1,167 +1,150 @@
-/* Skul'pted Engagement - Graphite Borders + Supersized Logo */
-
 :root {
-  --bg: #f8f9fa;
-  --text: #222;
-  --muted: #666;
-  --header-bg: #3a3a3c; /* graphite steel gray */
-  --footer-bg: #2b2b2d; /* darker steel */
+  --graphite: #2b2b2d;
+  --graphite-light: #3a3a3c;
+  --text-light: #f1f1f1;
+  --gold: #ffb400;
+  --bg: #f9f9f9;
 }
 
-/* Reset */
-* { box-sizing: border-box; }
-
-body {
-  font-family: Arial, Helvetica, sans-serif;
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
   background: var(--bg);
-  color: var(--text);
+  color: #222;
   line-height: 1.5;
-
-  /* graphite borders at top and bottom */
-  border-top: 40px solid transparent;
-  border-bottom: 40px solid transparent;
-  background-image:
-    linear-gradient(#4a4a4a, #2e2e2e),
-    linear-gradient(#4a4a4a, #2e2e2e);
-  background-repeat: no-repeat;
-  background-size: 100% 40px, 100% 40px;
-  background-position: top, bottom;
 }
 
-/* Header */
+/* Skip link */
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: auto;
+  width: 1px; height: 1px;
+  overflow: hidden;
+}
+.skip-link:focus {
+  position: static;
+  width: auto; height: auto;
+  margin: 1rem;
+  padding: 0.5rem 1rem;
+  background: black;
+  color: white;
+}
+
+/* Header (fixed) */
 .site-header {
-  background: var(--header-bg);
-  color: #fff;
-  padding: 80px 16px;
-  border-bottom: 2px solid #555;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: var(--graphite);
+  border-bottom: 5px solid var(--graphite-light);
+  z-index: 1000;
 }
 
-.brand {
+.header-inner {
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 40px;
+  padding: 1rem;
 }
 
-/* Supersized Logo */
+/* Logo & brand */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
 .logo-icon {
-  height: 400px; /* ~4× typical size */
+  height: 160px;
   width: auto;
-  display: block;
 }
 
-/* Brand Text */
 .brand-text h1 {
-  margin: 0;
-  font-size: 3.2rem;
-  letter-spacing: 1px;
+  font-size: 2rem;
+  color: var(--text-light);
 }
 
 .brand-text p {
-  margin: 16px 0 0;
-  font-size: 1.4rem;
-  color: #e6e6e6;
-  opacity: 0.95;
+  color: #ccc;
 }
 
 /* Navigation */
 .navbar {
-  background: #2e2e30;
-  padding: 12px 0;
-  margin-top: 20px;
+  position: relative;
 }
 
-.navbar ul {
+.menu {
   list-style: none;
-  margin: 0;
-  padding: 0;
   display: flex;
-  justify-content: center;
-  gap: 32px;
+  gap: 1.5rem;
 }
 
-.navbar a {
+.menu li a {
+  color: var(--text-light);
   text-decoration: none;
-  color: #fff;
-  font-size: 1.1rem;
   font-weight: bold;
-  transition: color 0.3s ease;
+  font-size: 1.1rem;
+  transition: color 0.3s;
 }
 
-.navbar a:hover {
-  color: #ffb400;
+.menu li a:hover {
+  color: var(--gold);
 }
 
-/* Hamburger */
 .menu-toggle {
   display: none;
-  font-size: 2rem;
-  color: #fff;
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  color: var(--text-light);
   cursor: pointer;
-  position: absolute;
-  top: 10px;
-  right: 20px;
 }
 
-/* Main Content */
+/* Main content pushed down so header doesn't overlap */
 main {
   max-width: 900px;
-  margin: 56px auto;
-  padding: 0 16px;
-}
-
-.intro p {
-  margin-top: 12px;
-  color: var(--muted);
-}
-
-.services ul {
-  margin-top: 12px;
-  padding-left: 1.25rem;
+  margin: 200px auto 4rem; /* adjust top margin for header */
+  padding: 0 1rem;
 }
 
 /* Footer */
 footer {
-  background: var(--footer-bg);
-  color: #bbb;
+  background: var(--graphite);
+  color: var(--text-light);
   text-align: center;
-  padding: 20px;
-  margin-top: 56px;
+  padding: 2rem 1rem;
+  border-top: 5px solid var(--graphite-light);
   font-size: 0.9rem;
 }
 
 /* Mobile */
 @media (max-width: 768px) {
-  .brand {
-    flex-direction: column;
-    text-align: center;
-    gap: 28px;
-  }
   .logo-icon {
-    height: 260px;
+    height: 100px;
   }
   .brand-text h1 {
-    font-size: 2.4rem;
+    font-size: 1.5rem;
   }
-  .brand-text p {
-    font-size: 1.2rem;
-  }
-
-  .navbar ul {
-    flex-direction: column;
-    align-items: center;
+  .menu {
     display: none;
-    background: #2e2e30;
-    padding: 20px 0;
-    gap: 16px;
+    flex-direction: column;
+    background: var(--graphite);
+    gap: 1rem;
+    padding: 1rem;
   }
-  .navbar ul.showing {
+  .menu.showing {
     display: flex;
   }
   .menu-toggle {
     display: block;
   }
 }
+
